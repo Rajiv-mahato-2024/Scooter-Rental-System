@@ -1,0 +1,47 @@
+<?php
+// Basic form submission handler (optional: add validation and sanitization)
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    // You can further handle saving this data into a database, etc.
+    echo "<h2>Thank you, $name, for signing up!</h2>";
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Waste Food Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="navbar">
+            <h1>Waste Food Management</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="#">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h2>Sign Up to Help Manage Food Waste</h2>
+        <form method="POST" action="app.php">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+            <button type="submit">Sign Up</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Waste Food Management. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

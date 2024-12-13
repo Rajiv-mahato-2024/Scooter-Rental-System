@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Login Page</title>
+<style>
+    :root {
+    --white: #ffffff;
+    --black: #333333;
+    --primary: #007bff;
+    --secondary: #6c757d;
+    --hover: #555555;
+    --font-family: "Arial", sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f9f9f9;
+}
+
+.wrapper {
+    position: relative;
+    width: 750px;
+    height: 450px;
+    background: var(--white);
+    border: 2px solid var(--black);
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.wrapper:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.info-text {
+    width: 50%;
+    padding: 20px;
+    text-align: center;
+    background: var(--primary);
+    color: var(--white);
+    transition: all 0.3s ease;
+}
+
+.info-text h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.info-text p {
+    font-size: 16px;
+}
+
+.info-text:hover {
+    background: var(--secondary);
+}
+
+.form-box {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.input-box {
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+}
+
+.input-box label {
+    font-size: 14px;
+    color: var(--black);
+    margin-bottom: 5px;
+    display: block;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid var(--black);
+    border-radius: 5px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.input-box input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.submit input {
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.submit input:hover {
+    background: var(--hover);
+    transform: scale(1.05);
+}
+
+.input-box.animation {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.input-box.animation:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.input-box.animation:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.input-box.animation:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.input-box.animation:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+</style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="info-text register">
+            <h2>Welcome Back!</h2>
+            <p></p>
+        </div>
+
+        <div class="form-box login">
+            <form action="backend.php" method="POST">
+                <div class="input-box animation" style="--i: 0">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="input-box animation" style="--i: 1">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="input-box animation" style="--i: 2">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="submit animation" style="--i: 3">
+                    <input type="submit" name="register" value="Sign Up">
+                </div>
+                <div class="signin animation" style="--i: 4">
+                    <p>Already have an account? <a href="/car-rental-website-main/login.html" class="register-link">Login</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.querySelector("form").addEventListener("submit", function(e) {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            if (username.length < 3 || password.length < 6) {
+                e.preventDefault();
+                alert("Username must be at least 3 characters and password at least 6 characters.");
+            }
+        });
+    </script>
+</body>
+
+
+
+</html>
